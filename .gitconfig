@@ -1,0 +1,52 @@
+[user]
+  name  = Michael Chinigo
+  email = chinigo@gmail.com
+[format]
+  pretty = %Cred%h%Creset %C(black bold)|%Creset %<(56,trunc)%s %C(blue)[%cd]%C(green)%d%Creset
+[alias]
+  st = status
+  di = diff
+  co = checkout
+  ci = commit
+  br = branch
+  sta = stash
+  l = log
+  amend = commit --amend -CHEAD --reset-author
+  wip = !sh -c 'git commit --message \"WIP - $1\"' -
+  ds = diff --staged
+  pr = pull --rebase
+  lg = log --graph --pretty=format:'\
+%Cred%h%Creset \
+%C(blue)[%cd] \
+%C(white)%<(60,trunc)%s%Creset \
+%C(black) %cn%Creset \
+%Creset%C(green)%d%Creset \
+'
+
+  llg = log --graph --stat --stat-width=80 --stat-count=16 --pretty=format:'\
+--------------------------------------------------------------------------------%n \
+%C(blue)[%cd]%Creset \
+%C(black)%cn%Creset\
+%C(red)%>|(80)%H%Creset%n\
+%C(green)%>|(80)%d%Creset%n\
+ %s%n\
+ %n%b%n'
+
+[apply]
+  whitespace = nowarn
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+  ui = auto
+[core]
+  editor = vim
+[log]
+  date = short
+[diff]
+  context = 2
+  tool = vimdiff
+[push]
+  default = simple
+[difftool]
+  prompt = false
