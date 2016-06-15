@@ -1,29 +1,57 @@
+; Questions
 [user]
   name  = Michael Chinigo
   email = chinigo@gmail.com
-[format]
-  pretty = %Cred%h%Creset %C(black bold)|%Creset %<(56,trunc)%s %C(blue)[%cd]%C(green)%d%Creset
-[alias]
-  st = status
-  di = diff
-  co = checkout
-  ci = commit
-  br = branch
-  sta = stash
-  l = log
-  amend = commit --amend -CHEAD --reset-author
-  wip = !sh -c 'git commit --message \"WIP - $1\"' -
-  ds = diff --staged
-  pr = pull --rebase
-  lg = log --graph --pretty=format:'\
+
+[alias] ; Note: recursive aliases need to go through a !sh
+  st         = status
+  co         = checkout
+  br         = branch
+  sta        = stash
+
+  ; Comparing
+  di         = diff
+  ds         = diff --staged
+  dc         = diff --cached
+  files      = show --stat
+  unmerged   = "!f() { git log ${@:1} ^${@:2} --no-merges; }; f"
+  unpushed   = !git unmerged `git branchname` `git upstream`
+
+  ; Staging
+  unstage    = reset HEAD
+  ap         = add -p
+  an         = add -AN
+  rp         = reset -p
+  cop        = checkout -p
+
+  ; Committing
+  ci         = commit
+  amend      = commit --amend -CHEAD --reset-author
+  wip        = !sh -c 'git commit --message \"WIP - $1\"' -
+  fixup      = commit --fixup
+  squash     = commit --squash
+  integrate  = "!test \"$(git merge-base HEAD \"$1\")\" = \"$(git rev-parse HEAD)\" && test \"$(git ls-remote origin $(git rev-parse --abbrev-ref HEAD) | awk '{ print $1 }')\" = \"$(git rev-parse HEAD)\" && git merge --no-ff --edit $1 || echo >&2 \"Not up-to-date; refusing to merge, rebase first! Also make sure the branch you are integrating into is up to date!\""
+
+  ; Branching
+  pr         = pull --rebase
+  mb         = merge --no-ff
+  branchname = rev-parse --abbrev-ref HEAD
+  upstream   = rev-parse --abbrev-ref master@{upstream}
+
+  ; Commit history
+  show       = show --pretty medium
+  l          = !git lg
+  lga        = !git lg --all
+  blog       = !git lg `git upstream`... --left-right
+  flog       = !git llg
+  llog       = !git llg
+  llga       = !git llg --all
+  lg         = log --graph --date=relative --pretty=format:'\
 %Cred%h%Creset \
 %C(blue)[%cd] \
-%C(white)%<(60,trunc)%s%Creset \
-%C(black) %cn%Creset \
-%Creset%C(green)%d%Creset \
-'
-
-  llg = log --graph --stat --stat-width=80 --stat-count=16 --pretty=format:'\
+%C(white)%s%Creset\
+%Creset%C(green)%d%Creset'
+  llg        = log --graph --stat --stat-width=80 --stat-count=16 --pretty=format:'\
 --------------------------------------------------------------------------------%n \
 %C(blue)[%cd]%Creset \
 %C(black)%cn%Creset\
@@ -32,21 +60,45 @@
  %s%n\
  %n%b%n'
 
+
 [apply]
-  whitespace = nowarn
+  whitespace          =  nowarn
+[branch]
+  autosetupmerge      =  true
 [color]
-  branch = auto
-  diff = auto
-  status = auto
-  ui = auto
+  branch              =  auto
+  diff                =  auto
+  interactive         =  auto
+  status              =  auto
+  ui                  =  auto
 [core]
-  editor = vim
-[log]
-  date = short
+  editor              =  vim
+  pager               =  /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
+  precomposeunicode   =  false
 [diff]
-  context = 2
-  tool = vimdiff
-[push]
-  default = simple
+  context             =  2
+  tool                =  vimdiff
+  compactionHeuristic =  true
 [difftool]
-  prompt = false
+  prompt              =  false
+[format]
+  pretty              =  %Cred%h%Creset %C(black bold)|%Creset %<(56,trunc)%s %C(blue)[%cd]%C(green)%d%Creset
+[interactive]
+  diffFilter          =  diff-highlight
+[log]
+  date                =  short
+[mergetool]
+  keepBackup          =  false
+[push]
+  default             =  simple
+[rebase]
+  autosquash          =  true
+[rerere]
+  enabled             =  false
+
+[difftool "sourcetree"]
+  cmd           =  opendiff \"$LOCAL\" \"$REMOTE\"
+  path          =
+[mergetool "sourcetree"]
+  cmd           =  /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode =  true
