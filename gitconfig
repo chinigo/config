@@ -39,9 +39,9 @@
   upstream   = rev-parse --abbrev-ref master@{upstream}
 
   ; Rebasing
-  rm         = rebase origin/master
-  rc         = rebase --continue
-  ra         = rebase --abort
+  rem         = rebase origin/master
+  rec         = rebase --continue
+  rea         = rebase --abort
 
   ; Commit history
   show       = show --pretty medium
