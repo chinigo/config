@@ -38,6 +38,11 @@
   branchname = rev-parse --abbrev-ref HEAD
   upstream   = rev-parse --abbrev-ref master@{upstream}
 
+  ; Rebasing
+  rm         = rebase origin/master
+  rc         = rebase --continue
+  ra         = rebase --abort
+
   ; Commit history
   show       = show --pretty medium
   l          = !git lg
