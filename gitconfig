@@ -1,7 +1,6 @@
 ; Questions
-[user]
-  name  = Michael Chinigo
-  email = chinigo@gmail.com
+[include]
+  path = ~/.gitconfig.local
 
 [alias] ; Note: recursive aliases need to go through a !sh
   st         = status
