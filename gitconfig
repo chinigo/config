@@ -95,7 +95,7 @@
 [mergetool]
   keepBackup          =  false
 [push]
-	default = current
+  default = current
 [rebase]
   autosquash          =  true
 [rerere]
