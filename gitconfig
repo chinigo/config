@@ -89,7 +89,7 @@
 [format]
   pretty              =  %Cred%h%Creset %C(black bold)|%Creset %<(56,trunc)%s %C(blue)[%cd]%C(green)%d%Creset
 [interactive]
-  diffFilter          =  diff-highlight
+  diffFilter          = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight
 [log]
   date                =  short
 [mergetool]
