@@ -22,7 +22,11 @@
   aa         = add -A
   an         = add -AN
   rp         = reset -p
+
+  ; Checking out
   cop        = checkout -p
+  cob        = checkout -b
+  com        = checkout master
 
   ; Committing
   ci         = commit
@@ -30,13 +34,15 @@
   wip        = !sh -c 'git commit --message \"WIP - $1\"' -
   fixup      = commit --fixup
   squash     = commit --squash
-  integrate  = "!test \"$(git merge-base HEAD \"$1\")\" = \"$(git rev-parse HEAD)\" && test \"$(git ls-remote origin $(git rev-parse --abbrev-ref HEAD) | awk '{ print $1 }')\" = \"$(git rev-parse HEAD)\" && git merge --no-ff --edit $1 || echo >&2 \"Not up-to-date; refusing to merge, rebase first! Also make sure the branch you are integrating into is up to date!\""
+  integrate  = !git pull --rebase origin $(git rev-parse --abbrev-ref HEAD) && git pull --rebase origin master
 
   ; Branching
   pr         = pull --rebase
   mb         = merge --no-ff
   branchname = rev-parse --abbrev-ref HEAD
   upstream   = rev-parse --abbrev-ref master@{upstream}
+  prunelocal = ! git fetch -v origin && git branch -l | cut -d' ' -f3 | grep -v master | xargs git branch -d
+  pruneall   = ! git prunelocal && git remote prune origin
 
   ; Rebasing
   rem         = rebase origin/master
@@ -66,8 +72,6 @@
  %n%b%n'
 
 
-[apply]
-  whitespace          =  nowarn
 [branch]
   autosetupmerge      =  true
 [color]
@@ -78,7 +82,6 @@
   ui                  =  auto
 [core]
   editor              =  vim
-  pager               =  /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
   precomposeunicode   =  false
 [diff]
   context             =  2
@@ -88,8 +91,6 @@
   prompt              =  false
 [format]
   pretty              =  %Cred%h%Creset %C(black bold)|%Creset %<(56,trunc)%s %C(blue)[%cd]%C(green)%d%Creset
-[interactive]
-  diffFilter          = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight
 [log]
   date                =  short
 [mergetool]
@@ -100,10 +101,3 @@
   autosquash          =  true
 [rerere]
   enabled             =  false
-
-[difftool "sourcetree"]
-  cmd           =  opendiff \"$LOCAL\" \"$REMOTE\"
-  path          =
-[mergetool "sourcetree"]
-  cmd           =  /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-  trustExitCode =  true

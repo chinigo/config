@@ -1,6 +1,0 @@
-; copy this with your information to ~/.gitconfig.local
-[user]
-  author = <your initials here>
-  name = <your name>
-  email = <your@email> 
-  initials = <your initials>
