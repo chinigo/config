@@ -83,6 +83,7 @@
 [core]
   editor              =  vim
   precomposeunicode   =  false
+	excludesfile = /Users/chinigo/workspace/config/gitignore
 [diff]
   context             =  2
   tool                =  vimdiff
