@@ -16,7 +16,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 ##
 
-export PATH=/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:./node_modules/.bin:$HOME/.config/yarn/global/node_modules/.bin:/usr/local/var/homebrew/linked/grass7/grass-base/bin
+export PATH=./bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:./node_modules/.bin:$HOME/.config/yarn/global/node_modules/.bin:/usr/local/var/homebrew/linked/grass7/grass-base/bin
 export MANPATH=/usr/local/var/homebrew/linked/grass7/grass-base/docs/man:$MANPATH
 export EDITOR=vim
 export GIT_EDITOR='vim'
@@ -50,8 +50,6 @@ function cs() {
 
 # rbenv shims and autocompletion
 if type rbenv &> /dev/null; then eval "$(rbenv init -)"; fi
-
-export PATH=./bin:$PATH
 
 # Bindings
 bindkey '^[[1;9D' backward-word
