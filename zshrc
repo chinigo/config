@@ -41,6 +41,7 @@ PROMPT='%{$fg[blue]%}$(_collapsed_wd) $(_git_prompt_info) %{$fg[white]%}%# %{$te
 alias ll='ls -lAGFh'
 alias less='less -fSN'
 alias be='bundle exec'
+alias ping='prettyping --nolegend'
 
 # Script to clear scrollback buffer
 function cs() {
