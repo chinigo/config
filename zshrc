@@ -8,7 +8,7 @@ ZSH_THEME="robbyrussell"
 export DISABLE_AUTO_UPDATE=true
 
 COMPLETION_WAITING_DOTS="true"
-plugins=(cp dotenv git)
+plugins=(cp dotenv git virtualenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -34,7 +34,7 @@ _collapsed_wd() {
   echo $(pwd | perl -pe "s|^$HOME|~|g; s|/([^/]{1})[^/]*(?=/)|/\$1|g")
 }
 
-PROMPT='%{$fg[blue]%}$(_collapsed_wd) $(_git_prompt_info) %{$fg[white]%}%# %{$terminfo[white]%}'
+PROMPT='%{$fg[blue]%}$(_collapsed_wd) $(virtualenv_prompt_info)$(_git_prompt_info) %{$fg[white]%}%# %{$terminfo[white]%}'
 
 
 # Aliases
