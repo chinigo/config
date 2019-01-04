@@ -59,3 +59,6 @@ bindkey '^[[1;9C' forward-word
 bindkey -r '\el' # Unbind "run command: ls"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Configure Python
+export PIPENV_VENV_IN_PROJECT=true
