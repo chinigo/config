@@ -62,3 +62,5 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # Configure Python
 export PIPENV_VENV_IN_PROJECT=true
+
+eval "$(direnv hook zsh)"
