@@ -93,4 +93,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # Configure Python
 export PIPENV_VENV_IN_PROJECT=true
 
+# Configure GDAL
+export GDAL_DRIVER_PATH=/usr/local/lib/gdalplugins
+
 eval "$(direnv hook zsh)"
