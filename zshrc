@@ -73,6 +73,9 @@ alias ping='prettyping --nolegend'
 alias mrename="sed 's#\(.*\)#mv \"\1\" \"\1\"#' | sort | sudo vim '+Tabularize/\"\zs \"/l0' -"
 alias countdirs="find . -maxdepth 1 -type d -print0 | sort -z | xargs -0 -L1 du -hs"
 
+# rust-lldb needs system python
+alias rust-lldb='PATH=/usr/bin:$PATH rust-lldb'
+
 # Script to clear scrollback buffer
 function cs() {
   /usr/bin/osascript -e 'tell application "System Events" to tell process "Terminal" to keystroke "k" using command down' 2>1 /dev/null
