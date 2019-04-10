@@ -30,6 +30,7 @@
 
   ; Committing
   ci         = commit
+  reword     = commit --amend --reset-author
   amend      = commit --amend -CHEAD --reset-author
   wip        = !sh -c 'git commit --message \"WIP - $1\"' -
   fixup      = commit --fixup
