@@ -16,8 +16,23 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 ##
 
-export PATH=./bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:./node_modules/.bin:$HOME/.config/yarn/global/node_modules/.bin:/usr/local/var/homebrew/linked/grass7/grass-base/bin
-export MANPATH=/usr/local/var/homebrew/linked/grass7/grass-base/docs/man:$MANPATH
+eval `MANPATH= PATH= /usr/libexec/path_helper`
+
+path=(
+  ./bin
+  ${HOME}/.rbenv/shims
+  ${HOME}/.cargo/bin
+  /usr/local/sbin
+  "$path[@]"
+  /usr/local/var/homebrew/linked/osgeo-grass/grass-base/bin
+  /usr/local/Cellar/osgeo-gdal-python/2.4.1/bin
+)
+
+manpath=(
+  "$manpath[@]"
+  /usr/local/var/homebrew/linked/osgeo-grass/grass-base/docs/man/
+)
+
 export EDITOR=vim
 export GIT_EDITOR='vim'
 
@@ -48,9 +63,6 @@ function cs() {
   /usr/bin/osascript -e 'tell application "System Events" to tell process "Terminal" to keystroke "k" using command down' 2>1 /dev/null
   return 0
 }
-
-# rbenv shims and autocompletion
-if type rbenv &> /dev/null; then eval "$(rbenv init -)"; fi
 
 # Bindings
 bindkey '^[[1;9D' backward-word
