@@ -1,3 +1,5 @@
+[[ -f $HOME/.profile ]] && source $HOME/.profile
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -5,12 +7,22 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 ZSH_THEME="robbyrussell"
 
-export DISABLE_AUTO_UPDATE=true
+# Set to this to use case-sensitive completion
+CASE_SENSITIVE="false"
 
+# Comment this out to disable weekly auto-update checks
+DISABLE_AUTO_UPDATE="true"
+
+# Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(cp dotenv git virtualenv)
 
 source $ZSH/oh-my-zsh.sh
+
+# Encourage tmux and vim to display colors sanely
+export TERM=xterm-256color
 
 ##
 # User configuration
@@ -34,7 +46,7 @@ manpath=(
 )
 
 export EDITOR=vim
-export GIT_EDITOR='vim'
+export GIT_EDITOR=vim
 
 # Command prompt
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%}"
@@ -53,10 +65,13 @@ PROMPT='%{$fg[blue]%}$(_collapsed_wd) $(virtualenv_prompt_info)$(_git_prompt_inf
 
 
 # Aliases
+alias df='df -h'
 alias ll='ls -lAGFh'
 alias less='less -fSN'
 alias be='bundle exec'
 alias ping='prettyping --nolegend'
+alias mrename="sed 's#\(.*\)#mv \"\1\" \"\1\"#' | sort | sudo vim '+Tabularize/\"\zs \"/l0' -"
+alias countdirs="find . -maxdepth 1 -type d -print0 | sort -z | xargs -0 -L1 du -hs"
 
 # Script to clear scrollback buffer
 function cs() {
