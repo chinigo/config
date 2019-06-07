@@ -1,4 +1,3 @@
-; Questions
 [include]
   path = ~/.gitconfig.local
 
@@ -6,7 +5,6 @@
   st         = status
   co         = checkout
   br         = branch
-  sta        = stash
 
   ; Comparing
   di         = diff
@@ -18,6 +16,7 @@
 
   ; Staging
   unstage    = reset HEAD
+  rollback   = reset HEAD~
   ap         = add -p
   aa         = add -A
   an         = add -AN
@@ -30,25 +29,47 @@
 
   ; Committing
   ci         = commit
+  civ        = commit --verbose
   reword     = commit --amend --reset-author
   amend      = commit --amend -CHEAD --reset-author
   wip        = !sh -c 'git commit --message \"WIP - $1\"' -
-  fixup      = commit --fixup
-  squash     = commit --squash
+  fixup      = commit --fixup --reset-author
+  squash     = commit --squash --reset-author
   integrate  = !git pull --rebase origin $(git rev-parse --abbrev-ref HEAD) && git pull --rebase origin master
 
   ; Branching
   pr         = pull --rebase
+  prm        = pull --rebase master
+  prom       = pull --rebase origin master
   mb         = merge --no-ff
+  bl         = branch --list
+  ba         = branch --all
+  br         = branch --remote
   branchname = rev-parse --abbrev-ref HEAD
   upstream   = rev-parse --abbrev-ref master@{upstream}
   prunelocal = ! git fetch -v origin && git branch -l | cut -d' ' -f3 | grep -v master | xargs git branch -d
   pruneall   = ! git prunelocal && git remote prune origin
 
   ; Rebasing
-  rem         = rebase origin/master
-  rec         = rebase --continue
-  rea         = rebase --abort
+  rem        = rebase origin/master
+  remi       = rebase origin/master --interactive
+  rec        = rebase --continue
+  rea        = rebase --abort
+  res        = rebase --skip
+
+  ; Cherry-picking
+  cp         = cherry-pick
+  cpc        = cherry-pick --continue
+  cpa        = cherry-pick --abort
+
+  ; Stashing
+  sta        = stash
+  stl        = stash list
+  sts        = stash show
+  stsp       = stash show --patch
+  stss       = stash show --stat
+  std        = stash drop
+  stc        = stash clear
 
   ; Commit history
   show       = show --pretty medium
@@ -74,39 +95,44 @@
 
 
 [branch]
-  autosetupmerge      =  true
+  autosetupmerge      = true
 [color]
-  branch              =  auto
-  diff                =  auto
-  interactive         =  auto
-  status              =  auto
-  ui                  =  auto
+  branch              = auto
+  diff                = auto
+  interactive         = auto
+  status              = auto
+  ui                  = auto
 [core]
-  editor              =  vim
-  precomposeunicode   =  false
-	excludesfile = /Users/chinigo/workspace/config/gitignore
+  editor              = vim
+  precomposeunicode   = false
+  excludesfile        = ~/workspace/config/gitignore
 [diff]
-  context             =  2
-  tool                =  vimdiff
-  compactionHeuristic =  true
+  context             = 2
+  tool                = vimdiff
+  compactionHeuristic = true
 [difftool]
-  prompt              =  false
+  prompt              = false
 [format]
-  pretty              =  %Cred%h%Creset %C(black bold)|%Creset %<(56,trunc)%s %C(blue)[%cd]%C(green)%d%Creset
+  pretty              = %Cred%h%Creset %C(black bold)|%Creset %<(56,trunc)%s %C(blue)[%cd]%C(green)%d%Creset
 [log]
-  date                =  short
+  date                = short
 [mergetool]
-  keepBackup          =  false
+  keepBackup          = false
+[pager]
+  branch              = false
 [push]
   default = current
 [rebase]
-  autosquash          =  true
+  autosquash          = true
 [rerere]
-  enabled             =  false
+  enabled             = false
 [filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+  process             = git-lfs filter-process
+  required            = true
+  clean               = git-lfs clean -- %f
+  smudge              = git-lfs smudge -- %f
 [lfs]
-  url = "http://git-lfs.chinigo.net"
+  url                 = "http://git-lfs.chinigo.net"
+[user]
+  name                = Michael Chinigo
+  email               = mchinigo@seatgeek.com
