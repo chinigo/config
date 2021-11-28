@@ -3,3 +3,7 @@
 .venv
 .direnv
 .DS_Store
+*.iml
+.idea
+.modules
+.go
