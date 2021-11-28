@@ -86,8 +86,6 @@
   lg         = log --graph --date=relative --pretty=format:'%Cred%h%Creset %C(blue)[%cd] %C(white)%s%Creset%Creset%C(green)%d%Creset'
   llg        = log --graph --stat --stat-width=80 --stat-count=16 --pretty=format:'--------------------------------------------------------------------------------%n %C(blue)[%cd]%Creset %C(black)%cn%Creset %C(red)%>|(80)%H%Creset%n %C(green)%>|(80)%d%n%Creset%n %s %n%n%b%n'
 
-[branch]
-  autosetupmerge      = true
 [color]
   branch              = auto
   diff                = auto
@@ -106,6 +104,8 @@
   colorMoved          = zebra
 [difftool]
   prompt              = false
+[fetch]
+  prune               = true
 [format]
   pretty              = %Cred%h%Creset %C(black bold)|%Creset %<(56,trunc)%s %C(blue)[%cd]%C(green)%d%Creset
 [log]
