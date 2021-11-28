@@ -84,7 +84,7 @@
   llog       = !git llg
   llga       = !git llg --all
   lg         = log --graph --date=relative --pretty=format:'%Cred%h%Creset %C(blue)[%cd] %C(white)%s%Creset%Creset%C(green)%d%Creset'
-  llg        = log --graph --stat --stat-width=80 --stat-count=16 --pretty=format:'--------------------------------------------------------------------------------%n %C(blue)[%cd]%Creset %C(black)%cn%Creset %C(red)%>|(80)%H%Creset%n %C(green)%>|(80)%d%Creset%n %s %b%n'
+  llg        = log --graph --stat --stat-width=80 --stat-count=16 --pretty=format:'--------------------------------------------------------------------------------%n %C(blue)[%cd]%Creset %C(black)%cn%Creset %C(red)%>|(80)%H%Creset%n %C(green)%>|(80)%d%n%Creset%n %s %n%n%b%n'
 
 [branch]
   autosetupmerge      = true
