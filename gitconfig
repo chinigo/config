@@ -98,10 +98,12 @@
   editor              = vim
   precomposeunicode   = false
   excludesfile        = ~/workspace/config/gitignore
+  pager               = "git-split-diffs --color | less"
 [diff]
   context             = 2
   tool                = vimdiff
   compactionHeuristic = true
+  colorMoved          = zebra
 [difftool]
   prompt              = false
 [format]
@@ -111,7 +113,10 @@
 [mergetool]
   keepBackup          = false
 [pager]
-  branch              = false
+  branch              = less
+  log                 = less
+  diff                = "git-split-diffs --color | less"
+  show                = "git-split-diffs --color | less"
 [push]
   default = current
 [rebase]
@@ -128,5 +133,9 @@
 [user]
   name                = Michael Chinigo
   email               = mchinigo@seatgeek.com
+
+# https://github.com/banga/git-split-diffs
+[split-diffs]
+  theme-name          = github-dark-dim
 [init]
 	defaultBranch = main
