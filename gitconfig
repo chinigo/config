@@ -125,6 +125,12 @@
   autosquash          = true
 [rerere]
   enabled             = false
+[user]
+  name = Michael Chinigo
+  email = mchinigo@vmware.com
+[url "git@gitlab.eng.vmware.com:"]
+  insteadOf = https://gitlab.eng.vmware.com/
+
 [filter "lfs"]
   process             = git-lfs filter-process
   required            = true
@@ -132,9 +138,6 @@
   smudge              = git-lfs smudge -- %f
 [lfs]
   url                 = "http://git-lfs.chinigo.net"
-[user]
-  name                = Michael Chinigo
-  email               = mchinigo@seatgeek.com
 
 # https://github.com/banga/git-split-diffs
 [split-diffs]
