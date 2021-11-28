@@ -117,6 +117,8 @@
   log                 = less
   diff                = "git-split-diffs --color | less"
   show                = "git-split-diffs --color | less"
+[pull]
+  rebase              = true
 [push]
   default = current
 [rebase]
