@@ -131,6 +131,8 @@
 [url "git@gitlab.eng.vmware.com:"]
   insteadOf = https://gitlab.eng.vmware.com/
 
+
+# git-lfs stuff
 [filter "lfs"]
   process             = git-lfs filter-process
   required            = true
