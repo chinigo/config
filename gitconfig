@@ -46,6 +46,8 @@
   bl         = branch --list
   ba         = branch --all
   br         = branch --remote
+  bd         = branch --delete
+  bD         = branch --delete --force
   branchname = rev-parse --abbrev-ref HEAD
   upstream   = ! git rev-parse --abbrev-ref $(git main)@{upstream}
   prunelocal = ! git fetch -v origin && git branch -l | cut -d' ' -f3 | grep -v master | grep -v main | xargs git branch -d
@@ -74,7 +76,7 @@
   stc        = stash clear
 
   ; Commit history
-  show       = show --pretty medium
+  sh         = show --pretty=fuller
   l          = !git lg
   lga        = !git lg --all
   blog       = !git lg `git upstream`... --left-right
