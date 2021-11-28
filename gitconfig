@@ -25,7 +25,7 @@
   ; Checking out
   cop        = checkout -p
   cob        = checkout -b
-  com        = checkout master
+  com        = !git checkout $(git main)
 
   ; Committing
   ci         = commit
@@ -35,24 +35,26 @@
   wip        = !sh -c 'git commit --message \"WIP - $1\"' -
   fixup      = commit --fixup --reset-author
   squash     = commit --squash --reset-author
-  integrate  = !git pull --rebase origin $(git rev-parse --abbrev-ref HEAD) && git pull --rebase origin master
+  integrate  = !git pull origin $(git rev-parse --abbrev-ref HEAD) && git pull origin $(git main)
 
   ; Branching
+  main       = !"f() { if [[ -n \"$(git branch --remote --list origin/main)\"  ]]; then echo main; else echo master; fi; }; f"
   pr         = pull --rebase
-  prm        = pull --rebase master
-  prom       = pull --rebase origin master
+  prm        = !git pull --rebase $(git main)
+  prom       = !git pull --rebase origin $(git main)
   mb         = merge --no-ff
   bl         = branch --list
   ba         = branch --all
   br         = branch --remote
   branchname = rev-parse --abbrev-ref HEAD
-  upstream   = rev-parse --abbrev-ref master@{upstream}
-  prunelocal = ! git fetch -v origin && git branch -l | cut -d' ' -f3 | grep -v master | xargs git branch -d
+  upstream   = ! git rev-parse --abbrev-ref $(git main)@{upstream}
+  prunelocal = ! git fetch -v origin && git branch -l | cut -d' ' -f3 | grep -v master | grep -v main | xargs git branch -d
   pruneall   = ! git prunelocal && git remote prune origin
 
   ; Rebasing
-  rem        = rebase origin/master
-  remi       = rebase origin/master --interactive
+  rem        = ! git rebase origin/$(git main)
+  rei        = rebase --interactive
+  remi       = ! git rebase origin/$(git main) --interactive
   rec        = rebase --continue
   rea        = rebase --abort
   res        = rebase --skip
@@ -124,3 +126,5 @@
 [user]
   name                = Michael Chinigo
   email               = mchinigo@seatgeek.com
+[init]
+	defaultBranch = main
