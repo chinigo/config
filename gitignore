@@ -1,4 +1,5 @@
 .envrc
 .bundle
 .venv
+.direnv
 .DS_Store
