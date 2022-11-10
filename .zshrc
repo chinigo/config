@@ -40,7 +40,6 @@ export PIPENV_VENV_IN_PROJECT=true # Configure Python
 export PSQLRC="$XDG_CONFIG_HOME/pg/psqlrc"
 export PSQL_HISTORY="$XDG_CONFIG_HOME/pg/psql_history"
 export TERM=xterm-256color # Encourage tmux and vim to display colors sanely
-export TOOLSMITHS_API_TOKEN=f43c06fc-0fe7-403a-9f4a-ecb8d00ee0c7
 
 # History
 export HISTFILE="${ZDOTDIR}/history"
