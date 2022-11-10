@@ -32,7 +32,6 @@ source $ZSH/oh-my-zsh.sh
 export BREW_INSTALL_PERSONAL=true
 export BREW_INSTALL_SG=true
 export EDITOR=`which nvim`
-export GITHUB_TOKEN=314476a18e27cde011b8a4a9f17fa939914a63b4
 export GIT_EDITOR=`which nvim`
 export HOMEBREW_NO_AUTO_UPDATE=true
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8` # For VMWARE
