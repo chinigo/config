@@ -104,6 +104,15 @@ bindkey '^[[1;9C' forward-word
 bindkey -r '\el' # Unbind "run command: ls"
 
 eval `MANPATH= PATH= /usr/libexec/path_helper`
+# # Integrations
+## asdf
+export ASDF_DATA_DIR=${XDG_CONFIG_HOME}/asdf
+export ASDF_CONFIG_FILE=${ASDF_DATA_DIR}/asdfrc
+[[ -f "$(brew --prefix)/opt/asdf/libexec/asdf.sh"  ]] && . "$(brew --prefix)/opt/asdf/libexec/asdf.sh"
+
+## Use asdf to configure direnv hooks
+[[ -f  "${XDG_CONFIG_HOME}/asdf-direnv/zshrc" ]] && source "${XDG_CONFIG_HOME}/asdf-direnv/zshrc"
+
 
 # Integrations
 ## iTerm

@@ -1,4 +1,5 @@
 .envrc
+.tools-versions
 .bundle
 .venv
 .direnv
