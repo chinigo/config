@@ -100,7 +100,20 @@ bindkey '^[[1;9D' backward-word
 bindkey '^[[1;9C' forward-word
 bindkey -r '\el' # Unbind "run command: ls"
 
+# Paths
 eval `MANPATH= PATH= /usr/libexec/path_helper`
+path=(
+  /opt/homebrew/sbin
+  /opt/homebrew/bin
+  ${HOME}/.rbenv/shims
+  ${HOME}/.krew/bin
+  ${HOME}/.cargo/bin
+  /usr/local/sbin
+  /usr/local/bin
+  "$path[@]"
+)
+
+
 # # Integrations
 ## asdf
 export ASDF_DATA_DIR=${XDG_CONFIG_HOME}/asdf
@@ -111,43 +124,17 @@ export ASDF_CONFIG_FILE=${ASDF_DATA_DIR}/asdfrc
 [[ -f  "${XDG_CONFIG_HOME}/asdf-direnv/zshrc" ]] && source "${XDG_CONFIG_HOME}/asdf-direnv/zshrc"
 
 
-# Integrations
 ## iTerm
-test -e "${XDG_CONFIG_HOME}/.iterm2_shell_integration.zsh" && source "${XDG_CONFIG_HOME}/.iterm2_shell_integration.zsh"
-
-## Direnv
-eval "$(direnv hook zsh)"
-
-## gcloud
-source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+[[ -e "${XDG_CONFIG_HOME}/zsh/.iterm2_shell_integration.zsh" ]] && source "${XDG_CONFIG_HOME}/zsh/.iterm2_shell_integration.zsh"
 
 ## kubectl
-# source /usr/local/var/homebrew/linked/kubernetes-cli/share/zsh/site-functions/_kubectl
+if command -v kubectl &>/dev/null && [[ ! -f "${ZSH_CACHE_DIR}/completions/_kubectl" ]]; then
+  typeset -g -A _comps
+  autoload -Uz _kubectl
+  _comps[kubectl]=_kubectl
 
-test -e  "${XDG_CONFIG_HOME}/vmware/vmware.sh" && source "${XDG_CONFIG_HOME}/vmware/vmware.sh"
+  kubectl completion zsh 2&>/dev/null > "${ZSH_CACHE_DIR}/completions/_kubectl"
+fi
 
-# NVM
-export NVM_DIR="${XDG_CONFIG_HOME}/nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh"  ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-# pyenv
-eval "$(pyenv init -)"
-
-# GVM
-[[ -s "${HOME}/.gvm/scripts/gvm" ]] && source "${HOME}/.gvm/scripts/gvm"
-#
-# Java SDKs
-export SDKMAN_DIR="${XDG_CONFIG_HOME}/.sdkman"
-[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
-
-# Paths
-path=(
-  ${HOME}/.rbenv/shims
-  ${HOME}/.krew/bin
-  ${HOME}/.cargo/bin
-  /usr/local/sbin
-  /usr/local/bin
-  "$path[@]"
-)
+export TANZU_CLI_NO_INIT=true
