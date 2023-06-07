@@ -1,7 +1,7 @@
 export XDG_CONFIG_HOME=${HOME}/.config
 
 # Path to your oh-my-zsh configuration.
-ZSH=${HOME}/workspace/config/oh-my-zsh
+ZSH=${XDG_CONFIG_HOME}/oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -21,7 +21,7 @@ export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(docker docker-compose git)
 
-source $ZSH/oh-my-zsh.sh
+source ${ZSH}/oh-my-zsh.sh
 
 ##
 # User configuration
@@ -37,8 +37,8 @@ export HOMEBREW_NO_AUTO_UPDATE=true
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8` # For VMWARE
 export KEYTIMEOUT=1 # Reduce delay switching to vi-mode to 0.1 sec
 export PIPENV_VENV_IN_PROJECT=true # Configure Python 
-export PSQLRC="$XDG_CONFIG_HOME/pg/psqlrc"
-export PSQL_HISTORY="$XDG_CONFIG_HOME/pg/psql_history"
+export PSQLRC="${XDG_CONFIG_HOME}/pg/psqlrc"
+export PSQL_HISTORY="${XDG_CONFIG_HOME}/pg/psql_history"
 export TERM=xterm-256color # Encourage tmux and vim to display colors sanely
 
 # History
