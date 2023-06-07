@@ -92,8 +92,7 @@ alias vim=nvim
 
 # Script to clear scrollback buffer
 function cs() {
-  /usr/bin/osascript -e 'tell application "System Events" to tell process "Terminal" to keystroke "k" using command down' 2>1 /dev/null
-  return 0
+  _iterm2_command "1337;ClearScrollback"
 }
 
 # Bindings
