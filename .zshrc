@@ -17,6 +17,7 @@ DISABLE_AUTO_UPDATE="true"
 COMPLETION_WAITING_DOTS="true"
 
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
+export ZSH_DISABLE_COMPFIX=true
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(docker docker-compose git)
@@ -29,12 +30,9 @@ source ${ZSH}/oh-my-zsh.sh
 
 # Environment variables
 
-export BREW_INSTALL_PERSONAL=true
-export BREW_INSTALL_SG=true
-export EDITOR=`which nvim`
-export GIT_EDITOR=`which nvim`
-export HOMEBREW_NO_AUTO_UPDATE=true
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8` # For VMWARE
+export EDITOR=nvim
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+export GIT_EDITOR=nvim
 export KEYTIMEOUT=1 # Reduce delay switching to vi-mode to 0.1 sec
 export PIPENV_VENV_IN_PROJECT=true # Configure Python 
 export PSQLRC="${XDG_CONFIG_HOME}/pg/psqlrc"
