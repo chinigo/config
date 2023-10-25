@@ -4,6 +4,7 @@ tap 'heroku/brew'
 tap 'homebrew/bundle'
 tap 'homebrew/services'
 
+brew 'asdf'
 brew 'automake'
 brew 'awscli'
 brew 'azure-cli'
