@@ -1,0 +1,19 @@
+main Brewfile
+
+tap 'carvel-dev/carvel'
+tap 'hashicorp/tap'
+
+brew 'carvel-dev/carvel/ytt'
+brew 'certstrap'
+brew 'hashicorp/tap/vault'
+brew 'kind'
+brew 'kubernetes-cli'
+brew 'lastpass-cli'
+brew 'openssl'
+brew 'prettier'
+brew 'shellcheck'
+brew 'terraform'
+brew 'wireguard-tools'
+brew 'yamllint'
+brew 'yarn'
+cask 'aws-vault'

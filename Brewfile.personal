@@ -1,0 +1,3 @@
+main Brewfile
+
+brew 'postgresql@15'
