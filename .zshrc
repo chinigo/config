@@ -1,4 +1,5 @@
 export XDG_CONFIG_HOME=${HOME}/.config
+export WORKSPACE_DIR=${HOME}/workspace
 
 # Path to your oh-my-zsh configuration.
 ZSH=${XDG_CONFIG_HOME}/oh-my-zsh
@@ -105,11 +106,10 @@ eval `MANPATH= PATH= /usr/libexec/path_helper`
 path=(
   /opt/homebrew/sbin
   /opt/homebrew/bin
-  ${HOME}/.rbenv/shims
   ${HOME}/.krew/bin
-  ${HOME}/.cargo/bin
   /usr/local/sbin
   /usr/local/bin
+  "${WORKSPACE_DIR}/repos/github.com/chinigo/config/bin"
   "$path[@]"
 )
 
