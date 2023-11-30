@@ -84,6 +84,8 @@ alias hl='highlight -O truecolor -s moria'
 alias kc=kubectl
 alias kcj='kubectl -o json'
 alias kcy='kubectl -o yaml'
+alias ktx=kubectx
+alias kns=kubens
 alias less='less -fSN'
 alias ll='ls -lAGFh'
 alias mrename="sed 's#\(.*\)#mv \"\1\" \"\1\"#' | sort | vim '+Tabularize/\"\zs \"/l0' -"
@@ -134,6 +136,31 @@ if command -v kubectl &>/dev/null && [[ ! -f "${ZSH_CACHE_DIR}/completions/_kube
   _comps[kubectl]=_kubectl
 
   kubectl completion zsh 2&>/dev/null > "${ZSH_CACHE_DIR}/completions/_kubectl"
+fi
+
+## kubectx & kubens
+if command -v kubectx &>/dev/null && [[ ! -f "${ZSH_CACHE_DIR}/completions/_kubectx" ]]; then
+
+  completion_file="$(brew --prefix kubectx 2>/dev/null)/share/zsh/site-functions/_kubectx"
+  if [[ -f "${completion_file}" ]]; then
+    typeset -g -A _comps
+    autoload -Uz _kubectx
+    _comps[kubectx]=_kubectx
+
+    cp "${completion_file}" "${ZSH_CACHE_DIR}/completions/_kubectx"
+  fi
+fi
+
+if command -v kubectx &>/dev/null && [[ ! -f "${ZSH_CACHE_DIR}/completions/_kubens" ]]; then
+
+  completion_file="$(brew --prefix kubectx 2>/dev/null)/share/zsh/site-functions/_kubens"
+  if [[ -f "${completion_file}" ]]; then
+    typeset -g -A _comps
+    autoload -Uz _kubens
+    _comps[kubens]=_kubens
+
+    cp "${completion_file}" "${ZSH_CACHE_DIR}/completions/_kubens"
+  fi
 fi
 
 
