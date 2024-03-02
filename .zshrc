@@ -112,6 +112,7 @@ path=(
   /usr/local/sbin
   "${WORKSPACE_DIR}/repos/github.com/chinigo/config/bin"
   "${WORKSPACE_DIR}/bin"
+  "/Applications/IntelliJ IDEA 2024.1 EAP.app/Contents/MacOS"
   "$path[@]"
 )
 
