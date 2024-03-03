@@ -32,12 +32,13 @@ source ${ZSH}/oh-my-zsh.sh
 # Environment variables
 
 export EDITOR=nvim
-export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 export GIT_EDITOR=nvim
 export KEYTIMEOUT=1 # Reduce delay switching to vi-mode to 0.1 sec
 export PIPENV_VENV_IN_PROJECT=true # Configure Python 
 export PSQLRC="${XDG_CONFIG_HOME}/pg/psqlrc"
 export PSQL_HISTORY="${XDG_CONFIG_HOME}/pg/psql_history"
+export TANZU_CLI_NO_INIT=true
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 export TERM=xterm-256color # Encourage tmux and vim to display colors sanely
 
 # History
@@ -165,4 +166,3 @@ if command -v kubectx &>/dev/null && [[ ! -f "${ZSH_CACHE_DIR}/completions/_kube
 fi
 
 
-export TANZU_CLI_NO_INIT=true
