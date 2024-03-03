@@ -166,3 +166,8 @@ if command -v kubectx &>/dev/null && [[ ! -f "${ZSH_CACHE_DIR}/completions/_kube
 fi
 
 
+## IntelliJ
+function idea() {
+  "/Applications/IntelliJ IDEA 2024.1 EAP.app/Contents/MacOS/idea" "${1}" &>/dev/null &!
+}
+
