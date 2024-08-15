@@ -111,6 +111,7 @@ path=(
   ${HOME}/.krew/bin
   /usr/local/sbin
   "${WORKSPACE_DIR}/repos/github.com/chinigo/config/bin"
+  "${WORKSPACE_DIR}/bin"
   "$path[@]"
 )
 
