@@ -110,7 +110,6 @@ path=(
   /opt/homebrew/bin
   ${HOME}/.krew/bin
   /usr/local/sbin
-  /usr/local/bin
   "${WORKSPACE_DIR}/repos/github.com/chinigo/config/bin"
   "$path[@]"
 )
