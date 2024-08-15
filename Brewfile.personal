@@ -1,3 +1,4 @@
 main Brewfile
 
+cask 'dropbox'
 brew 'postgresql@15'
