@@ -21,7 +21,7 @@ export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 export ZSH_DISABLE_COMPFIX=true
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(gcloud iterm2)
+plugins=(gcloud iterm2 wd)
 
 source ${ZSH}/oh-my-zsh.sh
 
