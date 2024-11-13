@@ -15,6 +15,9 @@
       },
       "hashicorp/tap": {
         "revision": "d564baab90b51d55dc7b41f1e5d9536ef1ad706e"
+      },
+      "teamookla/speedtest": {
+        "revision": "1ff487f465bb01c3007c0bc17f1f793244ee2eaa"
       }
     },
     "brew": {
@@ -2801,6 +2804,9 @@
       "chromium": {
         "version": "latest",
         "options": {
+          "args": {
+            "no_quarantine": true
+          },
           "full_name": "chromium"
         }
       },
@@ -2871,7 +2877,7 @@
         }
       },
       "intellij-idea": {
-        "version": "2024.2,242.20224.300",
+        "version": "2024.3,243.21565.193",
         "options": {
           "full_name": "intellij-idea"
         }
