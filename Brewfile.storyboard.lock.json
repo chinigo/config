@@ -1,0 +1,65 @@
+{
+  "entries": {
+    "brew": {
+      "vite": {
+        "version": "5.4.11",
+        "bottle": {
+          "rebuild": 0,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "arm64_sequoia": {
+              "cellar": ":any",
+              "url": "https://ghcr.io/v2/homebrew/core/vite/blobs/sha256:757ea2dea503f386e5c741d5b6ba461c7a7b41b72bfdf7b96bb252d7a0558409",
+              "sha256": "757ea2dea503f386e5c741d5b6ba461c7a7b41b72bfdf7b96bb252d7a0558409"
+            },
+            "arm64_sonoma": {
+              "cellar": ":any",
+              "url": "https://ghcr.io/v2/homebrew/core/vite/blobs/sha256:757ea2dea503f386e5c741d5b6ba461c7a7b41b72bfdf7b96bb252d7a0558409",
+              "sha256": "757ea2dea503f386e5c741d5b6ba461c7a7b41b72bfdf7b96bb252d7a0558409"
+            },
+            "arm64_ventura": {
+              "cellar": ":any",
+              "url": "https://ghcr.io/v2/homebrew/core/vite/blobs/sha256:757ea2dea503f386e5c741d5b6ba461c7a7b41b72bfdf7b96bb252d7a0558409",
+              "sha256": "757ea2dea503f386e5c741d5b6ba461c7a7b41b72bfdf7b96bb252d7a0558409"
+            },
+            "sonoma": {
+              "cellar": ":any",
+              "url": "https://ghcr.io/v2/homebrew/core/vite/blobs/sha256:f852306eb97051070ae57ada0c3a65887919e6408a621a0780b50475ac412e27",
+              "sha256": "f852306eb97051070ae57ada0c3a65887919e6408a621a0780b50475ac412e27"
+            },
+            "ventura": {
+              "cellar": ":any",
+              "url": "https://ghcr.io/v2/homebrew/core/vite/blobs/sha256:f852306eb97051070ae57ada0c3a65887919e6408a621a0780b50475ac412e27",
+              "sha256": "f852306eb97051070ae57ada0c3a65887919e6408a621a0780b50475ac412e27"
+            },
+            "x86_64_linux": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/vite/blobs/sha256:36af755c08a186ea8c493dddda5009f3988bdc470c60b765cd29fa49bbfcbe2c",
+              "sha256": "36af755c08a186ea8c493dddda5009f3988bdc470c60b765cd29fa49bbfcbe2c"
+            }
+          }
+        }
+      }
+    },
+    "cask": {
+      "linear-linear": {
+        "version": "1.27.4,2411070utbesidf",
+        "options": {
+          "full_name": "linear-linear"
+        }
+      }
+    }
+  },
+  "system": {
+    "macos": {
+      "sequoia": {
+        "HOMEBREW_VERSION": "4.4.4",
+        "HOMEBREW_PREFIX": "/opt/homebrew",
+        "Homebrew/homebrew-core": "api",
+        "CLT": "16.1.0.0.1.1729049160",
+        "Xcode": "16.0",
+        "macOS": "15.1"
+      }
+    }
+  }
+}
