@@ -168,6 +168,6 @@ fi
 
 ## IntelliJ
 function idea() {
-  "/Applications/IntelliJ IDEA 2024.1 EAP.app/Contents/MacOS/idea" "${1}" &>/dev/null &!
+  "/Applications/IntelliJ IDEA.app/Contents/MacOS/idea" "${1}" &>/dev/null &!
 }
 
