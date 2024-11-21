@@ -125,7 +125,7 @@ export ASDF_CONFIG_FILE=${ASDF_DATA_DIR}/asdfrc
 [[ -f "$(brew --prefix)/opt/asdf/libexec/asdf.sh"  ]] && . "$(brew --prefix)/opt/asdf/libexec/asdf.sh"
 
 ## Use asdf to configure direnv hooks
-[[ -f  "${XDG_CONFIG_HOME}/asdf-direnv/zshrc" ]] && source "${XDG_CONFIG_HOME}/asdf-direnv/zshrc"
+eval "$("$(brew --prefix)"/bin/direnv hook zsh)"
 
 
 ## iTerm
