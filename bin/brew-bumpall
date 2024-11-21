@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+for cmd in update outdated upgrade cleanup doctor;
+do
+  printf "\033[4;32mRunning \`brew %s\`\033[0m\n" ${cmd}
+  brew ${cmd}
+  echo
+done
