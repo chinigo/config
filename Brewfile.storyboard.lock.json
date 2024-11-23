@@ -47,13 +47,19 @@
         "options": {
           "full_name": "linear-linear"
         }
+      },
+      "firefox": {
+        "version": "132.0.2",
+        "options": {
+          "full_name": "firefox"
+        }
       }
     }
   },
   "system": {
     "macos": {
       "sequoia": {
-        "HOMEBREW_VERSION": "4.4.6-27-g9dad99b",
+        "HOMEBREW_VERSION": "4.4.6-45-g3b1d59d",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "16.1.0.0.1.1729049160",
