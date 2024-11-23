@@ -68,11 +68,8 @@ bindkey -r '\el' # Unbind "run command: ls"
 # Paths
 ##
 
-eval `MANPATH= PATH= /usr/libexec/path_helper`
+eval "$(/opt/homebrew/bin/brew shellenv)"
 path=(
-  /opt/homebrew/sbin
-  /opt/homebrew/bin
-  /usr/local/sbin
   "${WORKSPACE_DIR}/repos/github.com/chinigo/config/bin"
   "${WORKSPACE_DIR}/bin"
   "$path[@]"
