@@ -2,11 +2,11 @@
 # ZSH configuration
 ##
 
-export XDG_CONFIG_HOME=${HOME}/.config
-export WORKSPACE_DIR=${HOME}/workspace
+export XDG_CONFIG_HOME="${HOME}/.config"
+export WORKSPACE_DIR="${HOME}/workspace"
 
 # Path to your oh-my-zsh configuration.
-ZSH=${XDG_CONFIG_HOME}/oh-my-zsh
+ZSH="${XDG_CONFIG_HOME}/oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 CASE_SENSITIVE="false"
@@ -26,7 +26,7 @@ export TERM=xterm-256color # Encourage tmux and vim to display colors sanely
 # History
 export HISTFILE="${ZDOTDIR}/history"
 export HISTSIZE=100000
-export SAVEHIST=${HISTSIZE}
+export SAVEHIST="${HISTSIZE}"
 setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
 unsetopt SHARE_HISTORY           # Don't share history between all sessions.
 setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
@@ -72,7 +72,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 path=(
   "${WORKSPACE_DIR}/repos/github.com/chinigo/config/bin"
   "${WORKSPACE_DIR}/bin"
-  "$path[@]"
+  "${path[@]}"
 )
 
 
@@ -91,7 +91,7 @@ export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME="${ASDF_CONF_DIR}/tool-versions"
 eval "$("$(brew --prefix)"/bin/direnv hook zsh)"
 
 # Git
-export GIT_EDITOR=${EDITOR}
+export GIT_EDITOR="${EDITOR}"
 
 # iTerm
 [[ -e "${XDG_CONFIG_HOME}/zsh/.iterm2_shell_integration.zsh" ]] && source "${XDG_CONFIG_HOME}/zsh/.iterm2_shell_integration.zsh"
@@ -120,7 +120,7 @@ export WD_CONFIG="${XDG_CONFIG_HOME}/warprc"
 # Initialize oh-my-zsh
 ##
 plugins=(gcloud iterm2 wd)
-source ${ZSH}/oh-my-zsh.sh
+source "${ZSH}/oh-my-zsh.sh"
 
 
 ##
@@ -130,7 +130,7 @@ ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%}"
 
 function _git_current_remote() {
-  git rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null
+  git rev-parse --abbrev-ref --symbolic-full-name "@{u}" 2>/dev/null
 }
 
 function _git_prompt_info() {
@@ -139,7 +139,8 @@ function _git_prompt_info() {
 }
 
 _collapsed_wd() {
-  echo $(pwd | perl -pe "s|^$HOME|~|g; s|/([^/]{1})[^/]*(?=/)|/\$1|g")
+  pwd | perl -pe "s|^$HOME|~|g; s|/([^/]{1})[^/]*(?=/)|/\$1|g"
 }
 
 PROMPT='%{$fg[blue]%}$(_collapsed_wd) $(virtualenv_prompt_info)$(_git_prompt_info) %{$fg[white]%}%# %{$terminfo[white]%}'
+
