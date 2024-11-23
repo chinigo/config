@@ -41,21 +41,6 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
 
 ##
-# Aliases
-##
-
-alias countdirs="find . -maxdepth 1 -type d -print0 | sort -z | xargs -0 -L1 du -hs"
-alias kc=kubectl
-alias kcj='kubectl -o json'
-alias kcy='kubectl -o yaml'
-alias less='less -fSN'
-alias ll='ls -lAGFh'
-alias mrename="sed 's#\(.*\)#mv \"\1\" \"\1\"#' | sort | vim '+Tabularize/\"\zs \"/l0' -"
-alias ping='prettyping --nolegend'
-alias vim=nvim
-
-
-##
 # Bindings
 ##
 
@@ -143,4 +128,19 @@ _collapsed_wd() {
 }
 
 PROMPT='%{$fg[blue]%}$(_collapsed_wd) $(virtualenv_prompt_info)$(_git_prompt_info) %{$fg[white]%}%# %{$terminfo[white]%}'
+
+
+##
+# Aliases
+##
+
+alias countdirs="find . -maxdepth 1 -type d -print0 | sort -z | xargs -0 -L1 du -hs"
+alias kc=kubectl
+alias kcj='kubectl -o json'
+alias kcy='kubectl -o yaml'
+alias less='less -fSN'
+alias ll='ls -lAGFh'
+alias mrename="sed 's#\(.*\)#mv \"\1\" \"\1\"#' | sort | vim '+Tabularize/\"\zs \"/l0' -"
+alias ping='prettyping --nolegend'
+alias vim=nvim
 
