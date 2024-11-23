@@ -119,7 +119,7 @@ export WD_CONFIG="${XDG_CONFIG_HOME}/warprc"
 ##
 # Initialize oh-my-zsh
 ##
-plugins=(gcloud iterm2 wd)
+plugins=(iterm2 wd)
 source "${ZSH}/oh-my-zsh.sh"
 
 
