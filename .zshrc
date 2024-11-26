@@ -69,10 +69,6 @@ path=(
 ASDF_CONF_DIR="${XDG_CONFIG_HOME}/asdf"
 export ASDF_DATA_DIR="${ASDF_CONF_DIR}/data"
 export ASDF_CONFIG_FILE="${ASDF_CONF_DIR}/asdfrc"
-#
-# Need to strip ${HOME} from beginning of custom tool-versions path
-# See: https://github.com/asdf-vm/asdf/blob/c5116dca607a942319f286ffca57914edc1a1de2/lib/functions/versions.bash#L20
-export ASDF_DEFAULT_TOOL_VERSIONS_FILENAME=$(echo "${ASDF_CONF_DIR}/tool-versions" | sed "s#^${HOME}/##")
 
 [[ -f "$(brew --prefix)/opt/asdf/libexec/asdf.sh" ]] && . "$(brew --prefix)/opt/asdf/libexec/asdf.sh"
 
