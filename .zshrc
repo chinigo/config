@@ -55,6 +55,7 @@ bindkey -r '\el' # Unbind "run command: ls"
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 path=(
+  "$(brew --prefix)/opt/postgresql@17/bin"
   "${WORKSPACE_DIR}/repos/github.com/chinigo/config/bin"
   "${WORKSPACE_DIR}/bin"
   "${path[@]}"
