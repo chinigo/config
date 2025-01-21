@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+script_dir="$(dirname "${BASH_SOURCE[0]}")"
+
+for brewfile in $(realpath "${script_dir}/../Brewfile") $(realpath "${script_dir}/../Brewfile.storyboard");
+do
+  printf "\033[4;32mRunning \`brew bundle --file %s\`\033[0m\n" "${brewfile}"
+  brew bundle --file "${brewfile}"
+  echo
+done
