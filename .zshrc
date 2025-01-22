@@ -115,13 +115,9 @@ source "${ZSH}/oh-my-zsh.sh"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%}"
 
-function _git_current_remote() {
-  git rev-parse --abbrev-ref --symbolic-full-name "@{u}" 2>/dev/null
-}
-
 function _git_prompt_info() {
  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
- echo "$(parse_git_dirty)[$(git_current_branch):$(_git_current_remote)]"
+ echo "$(parse_git_dirty)[$(git_current_branch)]"
 }
 
 _collapsed_wd() {
