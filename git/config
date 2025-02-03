@@ -48,6 +48,7 @@
   bd         = branch --delete
   bD         = branch --delete --force
   branchname = rev-parse --abbrev-ref HEAD
+  reup       = ! git reset --hard $(git upstream)
   track      = ! git branch --set-upstream-to=origin/$(git symbolic-ref --short HEAD)
   tracking   = ! git rev-parse --abbrev-ref HEAD@{upstream}
   upstream   = ! git rev-parse --abbrev-ref $(git main)@{upstream}
