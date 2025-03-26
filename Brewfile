@@ -1,5 +1,3 @@
-tap 'homebrew/bundle'
-tap 'homebrew/services'
 tap 'teamookla/speedtest'
 
 brew 'asdf'
