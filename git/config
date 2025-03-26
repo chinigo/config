@@ -129,9 +129,7 @@
   enabled             = false
 [user]
   name = Michael Chinigo
-  email = mchinigo@vmware.com
-[url "git@gitlab.eng.vmware.com:"]
-  insteadOf = https://gitlab.eng.vmware.com/
+  email = chinigo@storyboard.fm
 
 
 # git-lfs stuff
