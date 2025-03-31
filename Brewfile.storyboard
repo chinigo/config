@@ -1,2 +1,4 @@
+cask 'dbvisualizer'
 cask 'linear-linear'
+cask 'notion'
 cask 'tableplus'
