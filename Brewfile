@@ -41,7 +41,6 @@ cask 'alfred'
 cask 'appcleaner'
 cask 'bartender'
 cask 'betterdisplay'
-cask 'butler'
 cask 'caffeine'
 cask 'charles'
 cask 'chromium', args: { no_quarantine: true }
