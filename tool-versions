@@ -1,8 +1,5 @@
-bun 1.1.36
 nodejs 23.3.0
 pnpm 9.15.4
 python 3.13.1
 shellcheck 0.10.0
-terraform 1.4.4
 yamlfmt 0.14.0
-yarn 1.22.22
