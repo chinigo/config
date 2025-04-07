@@ -68,5 +68,12 @@ ln -fhs "${SCRIPT_DIR}/vim-config/" "${VIM_CONF_DIR}"
 nvim +PluginInstall +qa
 
 echo "...done configuring NeoVIM"
+
+# asdf
+echo "Configuring asdf"
+ln -fhs "${SCRIPT_DIR}/tool-versions" "${HOME}/.tool-versions"
+echo "...done configuring asdf"
+
+
 echo
 echo "Done!"
