@@ -73,8 +73,9 @@ echo "...done configuring NeoVIM"
 # asdf
 echo "Configuring asdf"
 ln -fhs "${SCRIPT_DIR}/tool-versions" "${HOME}/.tool-versions"
+cut -d' ' -f1 "${HOME}/.tool-versions" | xargs -L1 asdf plugin add
+xargs -L1 asdf install < "${HOME}/.tool-versions"
 echo "...done configuring asdf"
-
 
 echo
 echo "Done!"
