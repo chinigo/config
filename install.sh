@@ -6,6 +6,7 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 export XDG_CONFIG_HOME=${HOME}/.config
 mkdir -p ${XDG_CONFIG_HOME}
+mkdir -p ${XDG_CONFIG_HOME}/zsh
 
 # Submodule'd dependencies
 echo "Cloning submodules..."
