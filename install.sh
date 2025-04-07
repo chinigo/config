@@ -61,7 +61,7 @@ echo "...done installing Homebrew packages"
 # Vim
 echo "Configuring NeoVIM..."
 
-VIM_CONF_DIR="${XDG_CONFIG_HOME}/vim"
+VIM_CONF_DIR="${XDG_CONFIG_HOME}/nvim"
 [[ -e "${VIM_CONF_DIR}" ]] && rm -f "${VIM_CONF_DIR}.bak" && mv -f "${VIM_CONF_DIR}" "${VIM_CONF_DIR}.bak"
 ln -fhs "${SCRIPT_DIR}/vim-config/" "${VIM_CONF_DIR}"
 
