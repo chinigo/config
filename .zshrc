@@ -88,7 +88,7 @@ function cs() {
 
 # IntelliJ
 function idea() {
-  "/Applications/IntelliJ IDEA.app/Contents/MacOS/idea" "${1}" &>/dev/null &!
+  "/Applications/IntelliJ IDEA 2025.1 EAP.app/Contents/MacOS/idea" "${1}" &>/dev/null &!
 }
 
 # Postgres
