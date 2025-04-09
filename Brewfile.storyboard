@@ -1,3 +1,5 @@
 cask 'dbvisualizer'
 cask 'linear-linear'
 cask 'notion'
+cask 'tuple'
+cask 'zoom'
