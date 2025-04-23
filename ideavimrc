@@ -1,0 +1,5 @@
+set ideajoin
+set surround
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+set ideajoin

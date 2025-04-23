@@ -77,5 +77,12 @@ cut -d' ' -f1 "${HOME}/.tool-versions" | xargs -L1 asdf plugin add
 xargs -L1 asdf install < "${HOME}/.tool-versions"
 echo "...done configuring asdf"
 
+
+# IDEA
+echo "Configuring IDEA"
+ln -fhs "${SCRIPT_DIR}/ideavimrc" "${HOME}/.ideavimrc"
+echo "...done configuring IDEA"
+
+
 echo
 echo "Done!"
