@@ -1,6 +1,7 @@
 tap 'teamookla/speedtest'
 
 brew 'asdf'
+brew 'atuin'
 brew 'automake'
 brew 'awscli'
 brew 'bat'

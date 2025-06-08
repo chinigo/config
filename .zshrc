@@ -108,6 +108,8 @@ export WD_CONFIG="${XDG_CONFIG_HOME}/warprc"
 plugins=(iterm2 wd)
 source "${ZSH}/oh-my-zsh.sh"
 
+# atuin
+eval "$("$(brew --prefix)"/bin/atuin init zsh)"
 
 ##
 # Command prompt
