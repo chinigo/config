@@ -48,6 +48,7 @@ cask 'caffeine'
 cask 'charles'
 cask 'chromium', args: { no_quarantine: true }
 cask 'docker'
+cask 'docker-desktop'
 cask 'dropbox'
 cask 'expressvpn'
 cask 'firefox'
