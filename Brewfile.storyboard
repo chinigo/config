@@ -1,4 +1,4 @@
-cask 'dbvisualizer'
+#cask 'dbvisualizer'
 cask 'linear-linear'
 cask 'notion'
 cask 'tuple'
