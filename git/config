@@ -37,23 +37,25 @@
   integrate  = !git pull origin $(git rev-parse --abbrev-ref HEAD) && git pull origin $(git main)
 
   ; Branching
-  main       = !"f() { if [[ -n \"$(git branch --remote --list origin/main)\"  ]]; then echo main; else echo master; fi; }; f"
-  pr         = pull --rebase
-  prm        = !git pull --rebase $(git main)
-  prom       = !git pull --rebase origin $(git main)
-  mb         = merge --no-ff
-  bl         = branch --list
-  ba         = branch --all
-  br         = branch --remote
-  bd         = branch --delete
-  bD         = branch --delete --force
-  branchname = rev-parse --abbrev-ref HEAD
-  reup       = ! git reset --hard $(git upstream)
-  track      = ! git branch --set-upstream-to=origin/$(git symbolic-ref --short HEAD)
-  tracking   = ! git rev-parse --abbrev-ref HEAD@{upstream}
-  upstream   = ! git rev-parse --abbrev-ref $(git main)@{upstream}
-  prunelocal = ! git fetch -v origin && git branch -l | cut -d' ' -f3 | grep -v master | grep -v main | xargs git branch -d
-  pruneall   = ! git prunelocal && git remote prune origin
+  main           = !"f() { if [[ -n \"$(git branch --remote --list origin/main)\"  ]]; then echo main; else echo master; fi; }; f"
+  pr             = pull --rebase
+  prm            = !git pull --rebase $(git main)
+  prom           = !git pull --rebase origin $(git main)
+  mb             = merge --no-ff
+  bl             = branch --list
+  ba             = branch --all
+  br             = branch --remote
+  bd             = branch --delete
+  bD             = branch --delete --force
+  branchname     = rev-parse --abbrev-ref HEAD
+  reup           = ! git reset --hard $(git upstream)
+  track          = ! git branch --set-upstream-to=origin/$(git symbolic-ref --short HEAD)
+  tracking       = ! git rev-parse --abbrev-ref HEAD@{upstream}
+  upstream       = ! git rev-parse --abbrev-ref $(git main)@{upstream}
+  prunelocal     = ! git fetch -v origin && git branch -l | cut -d' ' -f3 | grep -v master | grep -v main | xargs git branch -d
+  pruneall       = ! git prunelocal && git remote prune origin
+  recentbranches = !"f() { git for-each-ref refs/heads/ --format="%\\(refname:short\\)"; }; f"
+  recentremotes  = !"f() { git branch -r --sort=-committerdate --format="%\\(refname:short\\)"; }; f"
 
   ; Rebasing
   rem        = ! git rebase origin/$(git main)
