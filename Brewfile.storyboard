@@ -1,5 +1,6 @@
 #cask 'dbvisualizer'
 cask 'linear-linear'
+cask 'microsoft-teams'
 cask 'notion'
 cask 'tuple'
 cask 'zoom'
