@@ -34,6 +34,7 @@ brew 'the_silver_searcher'
 brew 'tree'
 brew 'watch'
 brew 'yamllint'
+brew 'yarn'
 brew 'yt-dlp'
 brew 'zsh'
 
