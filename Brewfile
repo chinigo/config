@@ -51,7 +51,6 @@ cask 'chromium', args: { no_quarantine: true }
 cask 'docker'
 cask 'docker-desktop'
 cask 'dropbox'
-cask 'expressvpn'
 cask 'firefox'
 cask 'google-chrome'
 cask 'handbrake-app'
