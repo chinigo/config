@@ -1,3 +1,7 @@
+tap 'pulumi/tap'
+
+brew 'pulumi'
+
 #cask 'dbvisualizer'
 cask 'linear-linear'
 cask 'microsoft-teams'
