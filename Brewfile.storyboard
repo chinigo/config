@@ -3,7 +3,7 @@ tap 'ariga/tap'
 
 brew 'ariga/tap/atlas'
 brew 'golang'
-brew 'pulumi'
+brew 'pulumi/tap/pulumi'
 
 #cask 'dbvisualizer'
 cask 'linear-linear'
