@@ -1,5 +1,6 @@
 tap 'pulumi/tap'
 
+brew 'golang'
 brew 'pulumi'
 
 #cask 'dbvisualizer'
