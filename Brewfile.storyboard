@@ -1,5 +1,7 @@
 tap 'pulumi/tap'
+tap 'ariga/tap'
 
+brew 'ariga/tap/atlas'
 brew 'golang'
 brew 'pulumi'
 
