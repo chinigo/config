@@ -14,6 +14,12 @@ COMPLETION_WAITING_DOTS="true"
 
 
 ##
+# Homebrew configuration
+##
+#
+export HOMEBREW_UPGRADE_GREEDY=true # Upgrade casks by default
+
+##
 # User configuration
 ##
 
