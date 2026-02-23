@@ -6,8 +6,6 @@ brew 'golang'
 brew 'pulumi/tap/pulumi'
 
 #cask 'dbvisualizer'
-cask 'claude'
-cask 'claude-code'
 cask 'cursor'
 cask 'cursor-cli'
 cask 'linear-linear'
