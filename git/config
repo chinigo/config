@@ -100,7 +100,7 @@
   editor              = vim
   precomposeunicode   = false
   excludesfile        = ~/.config/git/ignore
-  pager               = "$(asdf where nodejs)/bin/git-split-diffs --color | less"
+  pager               = "$(asdf where nodejs)/bin/git-split-diffs --color | less -i"
 [diff]
   context             = 2
   tool                = vimdiff
@@ -117,10 +117,10 @@
 [mergetool]
   keepBackup          = false
 [pager]
-  branch              = less
-  log                 = less
-  diff                = "$(asdf where nodejs)/bin/git-split-diffs --color | less"
-  show                = "$(asdf where nodejs)/bin/git-split-diffs --color | less"
+  branch              = less -i
+  log                 = less -i
+  diff                = "$(asdf where nodejs)/bin/git-split-diffs --color | less -i"
+  show                = "$(asdf where nodejs)/bin/git-split-diffs --color | less -i"
 [pull]
   rebase              = true
 [push]
