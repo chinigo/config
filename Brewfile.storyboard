@@ -1,9 +1,11 @@
-tap 'pulumi/tap'
 tap 'ariga/tap'
+tap 'pulumi/tap'
+tap 'withgraphite/tap'
 
 brew 'ariga/tap/atlas'
 brew 'golang'
 brew 'pulumi/tap/pulumi'
+brew 'withgraphite/tap/graphite'
 
 #cask 'dbvisualizer'
 cask 'cursor'
