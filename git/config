@@ -57,6 +57,11 @@
   recentbranches = !"f() { git for-each-ref refs/heads/ --format="%\\(refname:short\\)"; }; f"
   recentremotes  = !"f() { git branch -r --sort=-committerdate --format="%\\(refname:short\\)"; }; f"
 
+  ; Worktrees
+  wt             = worktree
+  wtdir          = !git-worktree-dir
+  wtl            = worktree list
+
   ; Rebasing
   rem        = ! git rebase origin/$(git main)
   rei        = rebase --interactive

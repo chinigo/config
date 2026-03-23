@@ -2,6 +2,7 @@
 # ZSH configuration
 ##
 
+export ZSHRC_DIR=${${(%):-%x}:A:h}
 export XDG_CONFIG_HOME="${HOME}/.config"
 export WORKSPACE_DIR="${HOME}/workspace"
 
@@ -82,9 +83,6 @@ export ASDF_CONFIG_FILE="${ASDF_CONF_DIR}/asdfrc"
 # direnv
 eval "$("$(brew --prefix)"/bin/direnv hook zsh)"
 
-# Git
-export GIT_EDITOR="${EDITOR}"
-
 # iTerm
 [[ -e "${XDG_CONFIG_HOME}/zsh/.iterm2_shell_integration.zsh" ]] && source "${XDG_CONFIG_HOME}/zsh/.iterm2_shell_integration.zsh"
 
@@ -116,6 +114,11 @@ source "${ZSH}/oh-my-zsh.sh"
 
 # atuin
 eval "$("$(brew --prefix)"/bin/atuin init zsh)"
+
+# Git
+export GIT_EDITOR="${EDITOR}"
+source "${ZSHRC_DIR}/bin/git-worktree-dir.completion.zsh"
+
 
 ##
 # Command prompt

@@ -1,0 +1,174 @@
+#!/usr/bin/env bash
+# Resolve a git worktree path by Linear-style ticket id substring in the branch name.
+#
+# Git alias (script prints one path on stdout; a bare !cd in an alias cannot change your shell):
+#
+#   cd "$(git wtdir svs-2227)"
+#
+# Prefer a single command with no embedded "$1": Git appends your CLI words to the
+# shell fragment, so the ticket reaches the script as a normal argument, e.g.:
+#
+#   git config --global alias.wtdir '!"/Users/you/bin/git-worktree-dir"'
+#
+# If the script is on PATH:
+#
+#   git config --global alias.wtdir '!git-worktree-dir'
+#
+# If you need "$1" inside a compound sh -c command, give sh a dummy $0 (POSIX);
+# otherwise the first real argument is assigned to $0 and "$1" is empty:
+#
+#   git config --global alias.wtdir '!sh -c '\''"/Users/you/bin/git-worktree-dir" "$1"'\'' -'
+#
+# In ~/.gitconfig that is usually written (one line, trailing space before - is optional):
+#
+#   wtdir = !sh -c '"/Users/you/bin/git-worktree-dir" "$1"' -
+#
+# Standalone: cd "$(git-worktree-dir svs-2227)"
+#
+# Zsh: source bin/git-worktree-dir.completion.zsh (direct command + git wtdir)
+
+set -euo pipefail
+
+git_worktree_dir_usage() {
+	printf 'Usage: %s <ticket-id>\n' "${0##*/}" >&2
+	printf '       %s --complete-candidates [prefix]\n' "${0##*/}" >&2
+	printf '  Example: cd "$(git wtdir svs-2227)"\n' "${0##*/}" >&2
+	exit 1
+}
+
+# Format one absolute path for --complete-candidates descriptions:
+# - Not under $HOME: unchanged absolute path.
+# - Under $HOME: %/… with home replaced by %; if under %/workspace/repos/github.com/,
+#   replace /workspace/repos/github.com/ with … (U+2026).
+git_worktree_dir_format_complete_desc() {
+	local abs="$1"
+	local h="${HOME:-}"
+	h="${h%/}"
+	if [[ -z "${h}" || ( "${abs}" != "${h}" && "${abs}" != "${h}/"* ) ]]; then
+		printf '%s' "${abs}"
+		return
+	fi
+	local out
+	if [[ "${abs}" == "${h}" ]]; then
+		out='%'
+	else
+		out="%/${abs#"$h/"}"
+	fi
+	if [[ "${out}" == '%/workspace/repos/github.com/'* ]]; then
+		# Collapse workspace/repos/github.com/ to …/ so the list reads %/…/rest/…
+		out="${out//workspace\/repos\/github.com\//…\/}"
+	elif [[ "${out}" == '%/workspace/repos/github.com' ]]; then
+		out='%/…'
+	fi
+	printf '%s' "${out}"
+}
+
+# Semicolon-separated absolute paths (from merge) → format each, rejoin with "; ".
+git_worktree_dir_format_complete_desc_paths() {
+	local paths="$1"
+	local out seg first=1
+	while [[ -n "${paths}" ]]; do
+		if [[ "${paths}" == *"; "* ]]; then
+			seg="${paths%%; *}"
+			paths="${paths#*; }"
+		else
+			seg="${paths}"
+			paths=""
+		fi
+		[[ -n "${seg}" ]] || continue
+		seg="$(git_worktree_dir_format_complete_desc "${seg}")"
+		if (( first )); then
+			out="${seg}"
+			first=0
+		else
+			out+="; ${seg}"
+		fi
+	done
+	printf '%s' "${out}"
+}
+
+# One line per unique ticket (lowercase): "<ticket><TAB><description>" (zsh aligns "  -- " in the menu).
+# Description is worktree path(s), merged with "; " if the same token appears on
+# multiple worktrees; see git_worktree_dir_format_complete_desc.
+git_worktree_dir_list_complete_candidates() {
+	local prefix_lc line branch tok current_path abs tlc merged
+	prefix_lc="$(printf '%s' "${1:-}" | tr '[:upper:]' '[:lower:]')"
+	local raw=""
+
+	current_path=""
+	while IFS= read -r line || [[ -n "${line}" ]]; do
+		if [[ "${line}" == worktree\ * ]]; then
+			current_path="${line#worktree }"
+		elif [[ "${line}" == branch\ refs/heads/* ]]; then
+			branch="${line#branch refs/heads/}"
+			[[ -n "${current_path}" ]] || continue
+			abs="$(cd "${current_path}" && pwd -P 2>/dev/null)" || continue
+			while IFS= read -r tok; do
+				[[ -n "${tok}" ]] || continue
+				tlc="$(printf '%s' "${tok}" | tr '[:upper:]' '[:lower:]')"
+				if [[ -z "${prefix_lc}" || "${tlc}" == "${prefix_lc}"* ]]; then
+					raw+="${tlc}"$'\t'"${abs}"$'\n'
+				fi
+			done < <(printf '%s\n' "${branch}" | grep -oE '[[:alnum:]]+-[0-9]+' 2>/dev/null || true)
+		fi
+	done < <(git worktree list --porcelain 2>/dev/null || true)
+
+	[[ -n "${raw}" ]] || return 0
+
+	merged="$(printf '%s' "${raw}" | LC_ALL=C sort -t $'\t' -k1,1 | awk -F '\t' '
+		NR == 1 { k = $1; p = $2; next }
+		$1 == k { p = p "; " $2; next }
+		{ print k "\t" p; k = $1; p = $2 }
+		END { print k "\t" p }
+	')"
+	while IFS=$'\t' read -r tok paths || [[ -n "${tok}" ]]; do
+		[[ -n "${tok}" ]] || continue
+		printf '%s\t%s\n' "${tok}" "$(git_worktree_dir_format_complete_desc_paths "${paths}")"
+	done <<<"${merged}"
+}
+
+git_worktree_dir() {
+	if [[ "${1:-}" == --complete-candidates ]]; then
+		git_worktree_dir_list_complete_candidates "${2:-}"
+		return 0
+	fi
+
+	[[ $# -eq 1 ]] || git_worktree_dir_usage
+
+	local ticket_lc branch_lc line branch current_path
+	local -a matches=()
+	ticket_lc="$(printf '%s' "${1}" | tr '[:upper:]' '[:lower:]')"
+	current_path=""
+
+	while IFS= read -r line || [[ -n "${line}" ]]; do
+		if [[ "${line}" == worktree\ * ]]; then
+			current_path="${line#worktree }"
+		elif [[ "${line}" == branch\ refs/heads/* ]]; then
+			branch="${line#branch refs/heads/}"
+			branch_lc="$(printf '%s' "${branch}" | tr '[:upper:]' '[:lower:]')"
+			if [[ "${branch_lc}" == *"${ticket_lc}"* ]]; then
+				matches+=("${current_path}")
+			fi
+		fi
+	done < <(git worktree list --porcelain)
+
+	local count="${#matches[@]}"
+	if [[ "${count}" -eq 0 ]]; then
+		printf 'No worktree found with a branch containing %q\n' "${1}" >&2
+		return 1
+	fi
+
+	if [[ "${count}" -gt 1 ]]; then
+		printf 'Multiple worktrees match %q:\n' "${1}" >&2
+		printf '%s\n' "${matches[@]}" >&2
+		return 2
+	fi
+
+	local abs_path
+	abs_path="$(cd "${matches[0]}" && pwd -P)"
+	printf '%s\n' "${abs_path}"
+}
+
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
+	git_worktree_dir "$@"
+fi
