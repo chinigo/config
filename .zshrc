@@ -61,7 +61,14 @@ bindkey -r '\el' # Unbind "run command: ls"
 ##
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# asdf
+ASDF_CONF_DIR="${XDG_CONFIG_HOME}/asdf"
+export ASDF_DATA_DIR="${ASDF_CONF_DIR}/data"
+export ASDF_CONFIG_FILE="${ASDF_CONF_DIR}/asdfrc"
+
 path=(
+  "${ASDF_DATA_DIR}/shims"
   "$(brew --prefix)/opt/postgresql@17/bin"
   "${WORKSPACE_DIR}/repos/github.com/chinigo/config/bin"
   "${WORKSPACE_DIR}/bin"
@@ -72,13 +79,6 @@ path=(
 ##
 # Integrations
 ##
-
-# asdf
-ASDF_CONF_DIR="${XDG_CONFIG_HOME}/asdf"
-export ASDF_DATA_DIR="${ASDF_CONF_DIR}/data"
-export ASDF_CONFIG_FILE="${ASDF_CONF_DIR}/asdfrc"
-
-[[ -f "$(brew --prefix)/opt/asdf/libexec/asdf.sh" ]] && . "$(brew --prefix)/opt/asdf/libexec/asdf.sh"
 
 # direnv
 eval "$("$(brew --prefix)"/bin/direnv hook zsh)"
