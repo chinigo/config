@@ -3,8 +3,14 @@
 ##
 
 export ZSHRC_DIR=${${(%):-%x}:A:h}
-export XDG_CONFIG_HOME="${HOME}/.config"
-export WORKSPACE_DIR="${HOME}/workspace"
+
+# Foundational env (XDG_CONFIG_HOME, WORKSPACE_DIR) lives in .zshenv. PATH and
+# shellenv setup (Homebrew, asdf, prepends) lives in .zprofile so it survives
+# the non-interactive Cursor agent shell. Re-source .zprofile defensively for
+# non-login interactive shells (e.g. `zsh` spawned from inside zsh), and to
+# pick up edits without restarting the terminal. `typeset -U path` in
+# .zprofile makes the re-source idempotent.
+[[ -z "${_ZPROFILE_LOADED-}" ]] && source "${ZDOTDIR:-${HOME}}/.zprofile"
 
 # Path to your oh-my-zsh configuration.
 ZSH="${XDG_CONFIG_HOME}/oh-my-zsh"
@@ -27,7 +33,6 @@ export HOMEBREW_UPGRADE_GREEDY=true # Upgrade casks by default
 # Terminal
 export EDITOR=nvim
 export KEYTIMEOUT=1 # Reduce delay switching to vi-mode to 0.1 sec
-export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 export TERM=xterm-256color # Encourage tmux and vim to display colors sanely
 
 # History
@@ -54,26 +59,6 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 bindkey '^[[1;9D' backward-word
 bindkey '^[[1;9C' forward-word
 bindkey -r '\el' # Unbind "run command: ls"
-
-
-##
-# Paths
-##
-
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-# asdf
-ASDF_CONF_DIR="${XDG_CONFIG_HOME}/asdf"
-export ASDF_DATA_DIR="${ASDF_CONF_DIR}/data"
-export ASDF_CONFIG_FILE="${ASDF_CONF_DIR}/asdfrc"
-
-path=(
-  "${ASDF_DATA_DIR}/shims"
-  "$(brew --prefix)/opt/postgresql@17/bin"
-  "${WORKSPACE_DIR}/repos/github.com/chinigo/config/bin"
-  "${WORKSPACE_DIR}/bin"
-  "${path[@]}"
-)
 
 
 ##
