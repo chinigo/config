@@ -132,6 +132,7 @@
   default = current
 [rebase]
   autosquash          = true
+  rebaseMerges        = true
 [rerere]
   enabled             = false
 [user]
