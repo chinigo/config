@@ -154,3 +154,5 @@
   theme-name          = github-dark-dim
 [init]
 	defaultBranch = main
+[remote "origin"]
+	tagOpt = --tags
