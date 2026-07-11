@@ -104,6 +104,8 @@ eval "$("$(brew --prefix)"/bin/atuin init zsh)"
 export GIT_EDITOR="${EDITOR}"
 source "${ZSHRC_DIR}/bin/git-worktree-dir.completion.zsh"
 
+# music-decoy
+defaults write com.lowtechguys.MusicDecoy mediaAppPath /Applications/Spotify.app
 
 ##
 # Command prompt
