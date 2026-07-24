@@ -146,8 +146,6 @@
   required            = true
   clean               = git-lfs clean -- %f
   smudge              = git-lfs smudge -- %f
-[lfs]
-  url                 = "http://git-lfs.chinigo.net"
 
 # https://github.com/banga/git-split-diffs
 [split-diffs]
