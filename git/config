@@ -48,11 +48,11 @@
   bd             = branch --delete
   bD             = branch --delete --force
   branchname     = rev-parse --abbrev-ref HEAD
-  reup           = ! git fetch && git reset --hard origin/$(git branchname)
+  reup           = ! git fetch --quiet && git reset --hard origin/$(git branchname)
   track          = ! git branch --set-upstream-to=origin/$(git symbolic-ref --short HEAD)
   tracking       = ! git rev-parse --abbrev-ref HEAD@{upstream}
   upstream       = ! git rev-parse --abbrev-ref $(git main)@{upstream}
-  prunelocal     = ! git fetch -v origin && git branch -l | cut -d' ' -f3 | grep -v master | grep -v main | xargs git branch -d
+  prunelocal     = ! git fetch --quiet origin && git branch -l | cut -d' ' -f3 | grep -v master | grep -v main | xargs git branch -d
   pruneall       = ! git prunelocal && git remote prune origin
   recentbranches = !"f() { git for-each-ref refs/heads/ --format="%\\(refname:short\\)"; }; f"
   recentremotes  = !"f() { git branch -r --sort=-committerdate --format="%\\(refname:short\\)"; }; f"
