@@ -13,3 +13,18 @@ export WORKSPACE_DIR="${HOME}/workspace"
 # .zshrc) is what lets zsh find .zprofile and .zshrc at $ZDOTDIR/ on the very
 # first invocation, so $HOME only needs the single .zshenv symlink.
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
+
+# asdf — paths only. Plugin shims are wired up via $ASDF_DATA_DIR/shims below;
+# we deliberately don't `source asdf.sh` here since that's a no-op for shims-
+# based asdf and would pull in interactive completions we don't need.
+ASDF_CONF_DIR="${XDG_CONFIG_HOME}/asdf"
+export ASDF_DATA_DIR="${ASDF_CONF_DIR}/data"
+export ASDF_CONFIG_FILE="${ASDF_CONF_DIR}/asdfrc"
+
+
+# Homebrew — sets HOMEBREW_PREFIX, PATH, MANPATH, INFOPATH, etc.
+if [[ -x /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -x /usr/local/bin/brew ]]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
