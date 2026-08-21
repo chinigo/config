@@ -22,6 +22,7 @@ typeset -U path PATH
 # Highest-priority entry first in the array. Walk in reverse so each iteration
 # prepends in front of the previous result; final order matches the array.
 local _prepend=(
+  "${HOMEBREW_PREFIX:+${HOMEBREW_PREFIX}/bin}"
   "${ASDF_DATA_DIR}/shims"
   "${HOMEBREW_PREFIX:+${HOMEBREW_PREFIX}/opt/postgresql@17/bin}"
   "${WORKSPACE_DIR}/repos/github.com/chinigo/config/bin"
