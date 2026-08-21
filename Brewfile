@@ -24,7 +24,7 @@ brew 'neovim'
 brew 'netcat'
 brew 'openssl'
 brew 'postgis'
-brew 'postgresql@17'
+brew 'postgresql', { link: true }
 brew 'prettyping'
 brew 'pstree'
 brew 'python-yq'

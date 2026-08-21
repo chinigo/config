@@ -24,7 +24,6 @@ typeset -U path PATH
 local _prepend=(
   "${HOMEBREW_PREFIX:+${HOMEBREW_PREFIX}/bin}"
   "${ASDF_DATA_DIR}/shims"
-  "${HOMEBREW_PREFIX:+${HOMEBREW_PREFIX}/opt/postgresql@17/bin}"
   "${WORKSPACE_DIR}/repos/github.com/chinigo/config/bin"
   "${WORKSPACE_DIR}/bin"
 )
