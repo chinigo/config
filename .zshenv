@@ -28,3 +28,7 @@ if [[ -x /opt/homebrew/bin/brew ]]; then
 elif [[ -x /usr/local/bin/brew ]]; then
   eval "$(/usr/local/bin/brew shellenv)"
 fi
+
+if [[ -f .zshenv.local ]]; then
+  source .zshenv.local
+fi
