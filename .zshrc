@@ -71,6 +71,9 @@ eval "$("$(brew --prefix)"/bin/direnv hook zsh)"
 # iTerm
 [[ -e "${XDG_CONFIG_HOME}/zsh/.iterm2_shell_integration.zsh" ]] && source "${XDG_CONFIG_HOME}/zsh/.iterm2_shell_integration.zsh"
 
+# work-ticket script
+[[ -e "${WORKSPACE_DIR}/repos/github.com/Storyboard-fm/storyboard-backend/main/sst/packages/dev-scripts/bin/work-ticket.zsh" ]] && source "${WORKSPACE_DIR}/repos/github.com/Storyboard-fm/storyboard-backend/main/sst/packages/dev-scripts/bin/work-ticket.zsh"
+
 function cs() {
   _iterm2_command "1337;ClearScrollback"
 }
@@ -96,6 +99,8 @@ export WD_CONFIG="${XDG_CONFIG_HOME}/warprc"
 ##
 plugins=(iterm2 wd)
 source "${ZSH}/oh-my-zsh.sh"
+
+export DISABLE_AUTO_TITLE=true
 
 # atuin
 eval "$("$(brew --prefix)"/bin/atuin init zsh)"
