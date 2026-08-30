@@ -32,3 +32,11 @@ fi
 if [[ -f .zshenv.local ]]; then
   source .zshenv.local
 fi
+
+
+## Universal environment vars, shared with Claude
+export AWS_PROFILE=storyboard-dev
+export AWS_REGION=us-east-2
+
+export NODE_OPTIONS="--max-old-space-size=16384"
+export STAGE=test
